@@ -8,6 +8,7 @@ namespace The_Cove
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private GameStateManager gsm;
 
         public Game1()
         {
@@ -18,8 +19,8 @@ namespace The_Cove
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            //Initializing GameStateManager
+            gsm = new GameStateManager(this);
             base.Initialize();
         }
 
@@ -36,7 +37,7 @@ namespace The_Cove
                 Exit();
 
             // TODO: Add your update logic here
-
+            gsm.doProccessingActive(gameTime);
             base.Update(gameTime);
         }
 
@@ -45,7 +46,7 @@ namespace The_Cove
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            gsm.doRenderActive(gameTime);
             base.Draw(gameTime);
         }
     }
