@@ -12,11 +12,13 @@ namespace The_Cove
         private Game1 game;
         private Input input;
         private Keybinds keybinds;
+        private SaveManager saveManager;
         public GameStateManager(Game1 game)
         {
             this.game = game;
             this.input = new Input(this);
             this.keybinds = new Keybinds(this);
+            this.saveManager = new SaveManager(this);
             gameStates = new Stack<GameState>();
             //TODO : Setting GameState to debug, remove this
             pushState(0);
@@ -50,6 +52,7 @@ namespace The_Cove
 
         public void doProccessingActive(GameTime gt)
         {
+            input.InputUpdate();
             gameStates.Peek().doProcessing(gt);
         }
 
@@ -57,5 +60,6 @@ namespace The_Cove
         public Game1 getGame() { return game; }
         public Input getInput() { return input; }
         public Keybinds getKeybinds() { return keybinds; }
+        public SaveManager getSaveManager() { return saveManager; }
     }
 }

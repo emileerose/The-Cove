@@ -7,7 +7,7 @@ namespace The_Cove
 {
     abstract class GameState
     {
-        private GameStateManager gsm;
+        public GameStateManager gsm;
         public GameState(GameStateManager gsm)
         {
             this.gsm = gsm;
